@@ -9,40 +9,73 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <body>
-    <button id="rule-set" class="rules">RULES</button>
-    <div id="feedback-alert" class="alert" role="alert"></div>
-    <div id="rule-set-wrapper" class="rule-set-wrapper">
-      <h3><strong>RULES</strong></h3>
-      <p>
-        Start the game by pressing the "START" button. That will spawn a question for you along with a set of answer-
-        alternatives(either multiple choice or a simple yes/no or true/false). You can select ONE of the answer-alternatives by simply pressing the button for the alternetive of your
-        choice.
-      </p>
-      <h3>Difficulty</h3>
-      <p>If you want an extra challange you can choose to play with an timer, this will add an bit of extra spice to the game! OBS remember that the timer starts when you press the "START" button!</p>
+    <div class="body-header">
+      <div class="body-header-left">
+        <div class="timer-wrapper hide">
+          <h2>Time Left</h2><!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
+            <div class="timer animatable">
+              <svg>
+                <circle cx="50%" cy="50%" r="90"/>
+                <circle cx="50%" cy="50%" r="90" pathLength="1" />
+                <text x="100" y="100" text-anchor="middle"><tspan id="timeLeft"></tspan></text>
+                <text x="100" y="120" text-anchor="middle">seconds</text>
+              </svg>
+            </div>
+        </div>
+      </div>      
+      <div class="body-header-right">
+        <h1>Open Trivia games TM</h1>
+        <p>Welcome to Trivia TM! Please read the rules for better understanding on how to play the game!</p>
+        <div class="btn-wrapper">
+          <button id="rule-set" class="rules">RULES</button>
+          <button id="timer-button" class="rules">Enable timer</button>
+        </div>
+        <div class="diff-wrapper">
+          <select name="diff-list" id="diff-list">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="mixed">Mixed</option>
+          </select>
+          <button class="diffLvl" disabled id="fetch-cta"></button>
+        </div>      
+      </div>
     </div>
-    <div class="header-wrapper">
-      <h1>Open API Trivia games</h1>
+    <div id="rule-set-wrapper" class="rule-set-wrapper">
+      <div id="rule-wrapper" class="rule-wrapper">
+        <h3><strong>RULES</strong></h3>
+        <p>
+          Start the game by pressing the "START" button. That will spawn a question for you along with a set of answer-
+          alternatives(either multiple choice or a simple yes/no or true/false). You can select ONE of the answer-alternatives by simply pressing the button for the alternetive of your
+          choice.
+        </p>
+        <h3>Difficulty</h3>
+        <p>
+          You can choose to only spawn question from a specific difficulty level by choosing a level in the drop-down list
+        </p>
+        <h3>Timer</h3>
+        <p>
+          If you want an extra challenge you can choose to play with an timer, this will add an bit of extra spice to the game! OBS remember that the timer starts when you press the "START" button!
+        </p>
+      </div>
+      <div id="points-wrapper" class="points-wrapper">
+        <h4>POINTS:</h4>
+        <p id="points"></p>
+      </div>
+    </div>
+    <div class="header-wrapper">      
+      <div id="feedback-alert" class="alert" role="alert"></div>
       <button id="start-btn" class="start-btn">START</button>
-      <button id="timer-button" class="timer-button">Enable timer</button>
     </div>
     <div id="trivia-wrapper" class="trivia-wrapper">      
       <ul id="answer-list" class="answer-list">
       </ul>      
-    </div>
-    <div class="timer-wrapper hide">
-      <h2>Time Left</h2>
-        <div class="timer animatable">
-          <svg>
-            <circle cx="50%" cy="50%" r="90"/>
-            <circle cx="50%" cy="50%" r="90" pathLength="1" />
-            <text x="100" y="100" text-anchor="middle"><tspan id="timeLeft"></tspan></text>
-            <text x="100" y="120" text-anchor="middle">seconds</text>
-          </svg>
-        </div>
-    </div>
+    </div>    
     <script src="script.js"></script>
   </body>
 </html>

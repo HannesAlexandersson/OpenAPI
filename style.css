@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #ffd700;
+  --background-color: #333;
+}
+*
+{
+    font-family: 'Bebas Neue', sans-serif;
+}
 body {
   overflow: hidden;
   margin: 0;
@@ -6,6 +14,31 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  box-sizing: border-box;
+}
+.body-header{
+    display: flex;
+}
+.body-header-right {    
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.body-header-left{   
+    display: flex;
+}
+.timer-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn-wrapper{
+    display: flex;
+}
+button {
+  box-shadow: grey 0px 0px 5px 0px;
+  border-radius: 15px;
 }
 .rules {
   font-size: 1.5em;
@@ -14,25 +47,62 @@ body {
 }
 /* RULE-SET*/
 .rule-set-wrapper {
+  text-align: center;
+  padding: 1em;
   position: absolute;
   top: 0;
   bottom: 0;
   right: -300px;
   width: 300px;
-  background-color: #333;
+  background-color: var(--background-color);
+  color: var(--primary-color);
   transition: 0.3s ease-in-out transform;
 }
 .rule-set-wrapper.is-open {
   transform: translateX(-300px);
 }
 /* RULE-SET ENDS*/
+/* HEADER*/
 .header-wrapper {
+  gap: 1rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-
+.btn{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+/* HEADER ENDS*/
+/* TRIVIA*/
+.trivia-wrapper {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.answer-list {
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+}
+.question{
+    text-align: center;
+    padding: 1em;
+    color: var(--primary-color);
+    font-size: 2em;
+    border: solid 2px var(--primary-color);
+    border-radius: 16px;
+    background-color: var(--background-color);
+}
+/* TRIVIA ENDS*/
 /* TIMER START*/
 .timer {
   margin-top: 10px;
@@ -46,7 +116,7 @@ body {
 .timer > svg > circle {
   fill: none;
   stroke-opacity: 0.3;
-  stroke: #0d6efd;
+  stroke: var(--primary-color);
   stroke-width: 10;
   transform-origin: center center;
   transform: rotate(-90deg);
@@ -73,5 +143,5 @@ body {
 
 /* TIMER ENDS*/
 .hide {
-    display: none;
-  }
+  display: none;
+}
