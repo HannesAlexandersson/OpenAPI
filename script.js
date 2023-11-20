@@ -29,13 +29,25 @@ const diffList = document.querySelector('#diff-list');
 const diffBtn = document.querySelector('#fetch-cta');
 diffBtn.innerText = 'SELECT DIFFICULTY';
 
-// Event listener for the select element
-diffList.addEventListener('change', () => {
-    // Get the selected difficulty level
+//timer variables
+let timeLeft = 10;
+let timer = document.getElementById('timeLeft');
+const timerBtn = document.querySelector('#timer-button');
+const timerWrapper = document.querySelector('.timer-wrapper');
+let timerEnabled = false;
+let countdownTimer;
+
+//Creating nodes and elements for the 'rule-set', css animation for the actuall display
+let ruleSetBtn = document.querySelector('#rule-set');
+let ruleSetWrapper = document.querySelector('#rule-set-wrapper');
+let ruleWrapper = document.querySelector('#rule-wrapper');
+let pointWrapper = document.querySelector('#points-wrapper');
+
+// Event listener for the selected difficulty element
+diffList.addEventListener('change', () => {    
     const selectedDifficulty = diffList.value;
 
-    // Set the appropriate URL based on the selected difficulty
-    
+    // Set the correct URL/API endpoint based on the selected difficulty    
     switch (selectedDifficulty) {
       case 'easy':
         apiUrl = easyUrl;
@@ -65,24 +77,9 @@ diffList.addEventListener('change', () => {
     });        
 });
 
-
-//timer variables
-let timeLeft = 10;
-let timer = document.getElementById('timeLeft');
-const timerBtn = document.querySelector('#timer-button');
-const timerWrapper = document.querySelector('.timer-wrapper');
-let timerEnabled = false;
-
-//Creating nodes and elements for the 'rule-set', css animation for the actuall display
-let ruleSetBtn = document.querySelector('#rule-set');
-let ruleSetWrapper = document.querySelector('#rule-set-wrapper');
-let ruleWrapper = document.querySelector('#rule-wrapper');
-let pointWrapper = document.querySelector('#points-wrapper');
-
-
-
-//toggle the rule-set animation
+//toggle the rule-set animation, Im using the same animation to display the points thus why they cant be toggled at the same time
 ruleSetBtn.addEventListener('click', toggleRules);
+
 function toggleRules() {
     if(ruleSetWrapper.classList.contains('is-open') && ruleWrapper.classList.contains('hide')) {
         pointWrapper.classList.add('hide');
@@ -109,18 +106,18 @@ const fetchTrivia = async () => {
     question['incorrect_answers'].forEach((answer) => {
         const incorrectAnswer = answer;
         answerArray.push(incorrectAnswer);
-    });//remove the hide class from the answer list
+    });// I dont want the answer btns to be displayed after the user has selected an answer, so I hide them and show them here
     if (triviaAnswerList.classList.contains('hide')) {
         triviaAnswerList.classList.remove('hide');
     }
-    //start the timer OM timer enablad
+    //start the timer IF timer is enablad
     if(timerEnabled){
         //runTimer(document.querySelector('.timer'));
         runTimer(timerWrapper);
     }  
     
     displayAnswers(answerArray,correctAnswer);
-    //hide the start button after it has been clicked
+    //hide the start button after it has been clicked to avoid errors and multiple start buttons etc
     startBtn.classList.add('hide');
 };
 
@@ -155,6 +152,7 @@ const displayAnswers = (answerArray, correctAnswer) => {
     });    
     triviaWrapper.appendChild(triviaAnswerList);
 };
+
 // Callback function for the event listeners of the answer buttons
 const handleAnswerClick = (event) => {
     const selectedButton = event.target;
@@ -214,7 +212,7 @@ timerBtn.addEventListener('click', () => {
 function isTimeLeft() {
     return timeLeft > -1;
   }
-let countdownTimer;
+
 function runTimer(timerElement) {
     const timerCircle = timerElement.querySelector('svg > circle + circle');
 	timerElement.classList.add('animatable');
@@ -282,7 +280,7 @@ const displayRestartButton = () => {
     const restartBtn = createButton('Restart Game', ['btn', 'btn-primary'], () => {
         // Clear the existing answer buttons
         clearAnswerButtons();
-        // empty the arrays so that the next question can be fetched
+        // empty the arrays so that the next question can be fetched and the old questions aren't displayed
         answerArray.splice(0, answerArray.length);
         shuffledAnswers.splice(0, shuffledAnswers.length);
         fetchTrivia();
@@ -292,7 +290,7 @@ const displayRestartButton = () => {
 };
 const clearAnswerButtons = () => {  
 
-    // Clear the existing buttons from the container after the user has selected an answer
+    // Clear the existing buttons from the container after the user has selected an answer so they dont get displayed again
     triviaAnswerList.innerHTML = ''; 
 };
 // Function to display current points on the screen
@@ -302,11 +300,12 @@ function displayPoints() {
         pointsElement.innerText = `Points: ${points}`;
     };
     if(ruleSetWrapper.classList.contains('is-open')) {
-        ruleSetWrapper.classList.remove('is-open');
+        pointWrapper.classList.remove('hide');
+        ruleWrapper.classList.add('hide');
     }else{
         ruleSetWrapper.classList.add('is-open');
+        ruleWrapper.classList.add('hide');
     };
-    ruleWrapper.classList.add('hide');
     if (pointWrapper.classList.contains('hide')) {
         pointWrapper.classList.remove('hide');
     };
