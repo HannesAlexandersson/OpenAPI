@@ -1,0 +1,77 @@
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.rules {
+  font-size: 1.5em;
+  margin: 1em;
+  padding: 0.5em 0.75em;
+}
+/* RULE-SET*/
+.rule-set-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -300px;
+  width: 300px;
+  background-color: #333;
+  transition: 0.3s ease-in-out transform;
+}
+.rule-set-wrapper.is-open {
+  transform: translateX(-300px);
+}
+/* RULE-SET ENDS*/
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* TIMER START*/
+.timer {
+  margin-top: 10px;
+}
+
+.timer > svg {
+  width: 200px;
+  height: 200px;
+}
+
+.timer > svg > circle {
+  fill: none;
+  stroke-opacity: 0.3;
+  stroke: #0d6efd;
+  stroke-width: 10;
+  transform-origin: center center;
+  transform: rotate(-90deg);
+}
+
+.timer > svg > circle + circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linecap: round;
+  stroke-opacity: 1;
+}
+
+.timer.animatable > svg > circle + circle {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.timer > svg > text {
+  font-size: 2rem;
+}
+
+.timer > svg > text + text {
+  font-size: 1rem;
+}
+
+/* TIMER ENDS*/
+.hide {
+    display: none;
+  }

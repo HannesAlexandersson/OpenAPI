@@ -4,13 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Open API</title>
+    <link rel="Stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h1>Open API Project Placeholder Title</h1>
-    <div id="trivia-wrapper">
-        <ul id="answer-list">
-
-        </ul>
+    <button id="rule-set" class="rules">RULES</button>
+    <div id="feedback-alert" class="alert" role="alert"></div>
+    <div id="rule-set-wrapper" class="rule-set-wrapper">
+      <h3><strong>RULES</strong></h3>
+      <p>
+        Start the game by pressing the "START" button. That will spawn a question for you along with a set of answer-
+        alternatives(either multiple choice or a simple yes/no or true/false). You can select ONE of the answer-alternatives by simply pressing the button for the alternetive of your
+        choice.
+      </p>
+      <h3>Difficulty</h3>
+      <p>If you want an extra challange you can choose to play with an timer, this will add an bit of extra spice to the game! OBS remember that the timer starts when you press the "START" button!</p>
+    </div>
+    <div class="header-wrapper">
+      <h1>Open API Trivia games</h1>
+      <button id="start-btn" class="start-btn">START</button>
+      <button id="timer-button" class="timer-button">Enable timer</button>
+    </div>
+    <div id="trivia-wrapper" class="trivia-wrapper">      
+      <ul id="answer-list" class="answer-list">
+      </ul>      
+    </div>
+    <div class="timer-wrapper hide">
+      <h2>Time Left</h2>
+        <div class="timer animatable">
+          <svg>
+            <circle cx="50%" cy="50%" r="90"/>
+            <circle cx="50%" cy="50%" r="90" pathLength="1" />
+            <text x="100" y="100" text-anchor="middle"><tspan id="timeLeft"></tspan></text>
+            <text x="100" y="120" text-anchor="middle">seconds</text>
+          </svg>
+        </div>
     </div>
     <script src="script.js"></script>
   </body>
