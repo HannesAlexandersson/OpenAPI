@@ -20,10 +20,10 @@ const  triviaWrapper = document.querySelector('#trivia-wrapper');
 let answerArray = [];
 const triviaAnswerList = document.querySelector('#answer-list');
 const startBtn = document.querySelector('#start-btn');
-startBtn.classList.add('btn', 'btn-primary');
 const feedbackAlert = document.getElementById('feedback-alert');
 let shuffledAnswers = [];
 let points = 0;
+let correctAnswerGlobal = '';
 //difficulty variables
 const diffList = document.querySelector('#diff-list');
 const diffBtn = document.querySelector('#fetch-cta');
@@ -41,8 +41,10 @@ let countdownTimer;
 let ruleSetBtn = document.querySelector('#rule-set');
 let ruleSetWrapper = document.querySelector('#rule-set-wrapper');
 let ruleWrapper = document.querySelector('#rule-wrapper');
+ruleWrapper.classList.add('hide')
+ruleSetWrapper.classList.add('hide')
 let pointWrapper = document.querySelector('#points-wrapper');
-
+pointWrapper.classList.add('hide');
 // Event listener for the selected difficulty element
 diffList.addEventListener('change', () => {    
     const selectedDifficulty = diffList.value;
@@ -81,17 +83,17 @@ diffList.addEventListener('change', () => {
 ruleSetBtn.addEventListener('click', toggleRules);
 
 function toggleRules() {
-    if(ruleSetWrapper.classList.contains('is-open') && ruleWrapper.classList.contains('hide')) {
-        pointWrapper.classList.add('hide');
-        ruleWrapper.classList.remove('hide');
-    }else if (ruleSetWrapper.classList.contains('is-open')){
-        ruleSetWrapper.classList.remove('is-open');
+    if(ruleSetWrapper.classList.contains('is-open')) {   
+        ruleSetWrapper.classList.remove('is-open');     
+        ruleSetWrapper.classList.add('hide');
     }else{
         ruleSetWrapper.classList.add('is-open');
+        ruleSetWrapper.classList.remove('hide');
     };
     if (ruleWrapper.classList.contains('hide')) {
-        ruleWrapper.classList.remove('hide');
-        pointWrapper.classList.add('hide');
+        ruleWrapper.classList.remove('hide');        
+    }else{
+        ruleWrapper.classList.add('hide');
     };
 };
 //fetching the trivia game
@@ -101,7 +103,8 @@ const fetchTrivia = async () => {
     const question = data['results'][0];    
     displayTrivia(question);
     //storing the correct answer in a separate variable for to be able to compare it with the user input for correct/wrong
-    const correctAnswer = question['correct_answer'];    
+    const correctAnswer = question['correct_answer'];  
+    correctAnswerGlobal = correctAnswer;  
     answerArray.push(question['correct_answer']);    
     question['incorrect_answers'].forEach((answer) => {
         const incorrectAnswer = answer;
@@ -114,8 +117,7 @@ const fetchTrivia = async () => {
     if(timerEnabled){
         //runTimer(document.querySelector('.timer'));
         runTimer(timerWrapper);
-    }  
-    
+    }      
     displayAnswers(answerArray,correctAnswer);
     //hide the start button after it has been clicked to avoid errors and multiple start buttons etc
     startBtn.classList.add('hide');
@@ -124,9 +126,9 @@ const fetchTrivia = async () => {
 //display the question
 const displayTrivia = (question) =>{
     triviaWrapper.innerHTML = `
-        <h5 class="category">Category: ${question['category']}</h5>
-        <h5 class="difficulty">Difficulty: ${question['difficulty']}</h5>
-        <h2 class="question">${question['question']}</h2>
+    <h5 class="category">Category: ${question['category']}</h5>
+    <h5 class="difficulty">Difficulty: ${question['difficulty']}</h5>
+    <h2 class="question">${question['question']}</h2>
     `;    
 };
 
@@ -160,7 +162,7 @@ const handleAnswerClick = (event) => {
     // Checking if the user selected the correct answer
     if (isCorrect) {
         // User selected the correct answer OBS add a way to continue the game here
-        showFeedback('Correct!', 'alert-success');
+        showFeedback(`${selectedButton.innerText} is Correct!`, 'alert-success');
         points++;
         //reset timer for next question
         stopAndResetTimer();
@@ -170,12 +172,14 @@ const handleAnswerClick = (event) => {
         }else{
             triviaAnswerList.classList.add('hide');
         }
+        
         displayNextQuestionButton();
         
     } else {
         // User selected the wrong answer OBS add a break to the game here
-        showFeedback('Wrong!', 'alert-danger');
-        points = 0;
+        showFeedback(`${selectedButton.innerText} is Wrong!`, 'alert-danger');
+        points = 0;        
+        ruleSetWrapper.classList.remove('is-open');
         //reset timer for next question
         stopAndResetTimer();
         if(triviaAnswerList.classList.contains('hide')){
@@ -201,10 +205,12 @@ const shuffleArray = (array) => {
 timerBtn.addEventListener('click', () => {
     if (timerWrapper.classList.contains('hide')) {
         timerWrapper.classList.remove('hide');
+        timerWrapper.classList.add('show');
         showFeedback('Timer ACTIVATED', 'alert-success');
         timerEnabled = true;
     }else{
         timerWrapper.classList.add('hide');
+        timerWrapper.classList.remove('show');
         showFeedback('Timer DEACTIVATED!', 'alert-danger');
         timerEnabled = false;
     }
@@ -248,11 +254,16 @@ function stopAndResetTimer() {
 
 //TIMER LOGIC END
 // bootsrtap logic: 
-function showFeedback(message, alertClass) {
+function showFeedback(message, alertClass, autoDismissTime = 5000) {
     feedbackAlert.textContent = message;
     feedbackAlert.className = `alert ${alertClass}`;
     feedbackAlert.style.display = 'block';   
+
+    setTimeout(() => {
+        feedbackAlert.style.display = 'none';
+    }, autoDismissTime);
 }
+
 // noticed I created alot of buttons, so I created a function for it, But then I realized it would be even more work to go back and redo all buttons I had already created, only to redo them with the function :)
 const createButton = (text, classes, clickHandler) => {
     const button = document.createElement('button');
@@ -267,6 +278,8 @@ const displayNextQuestionButton = () => {
     const nextQuestionBtn = createButton('Next Question', ['btn', 'btn-primary'], () => {
         // Clear the existing answer buttons
         clearAnswerButtons();
+        //show the correct answer
+        showFeedback(`the correct answer was ${correctAnswerGlobal}`, 'alert-danger');
         // empty the arrays so that the next question can be fetched
         answerArray.splice(0, answerArray.length);
         shuffledAnswers.splice(0, shuffledAnswers.length);
@@ -280,6 +293,8 @@ const displayRestartButton = () => {
     const restartBtn = createButton('Restart Game', ['btn', 'btn-primary'], () => {
         // Clear the existing answer buttons
         clearAnswerButtons();
+        // show the correct answer
+        showFeedback(`the correct answer was ${correctAnswerGlobal}`, 'alert-danger');
         // empty the arrays so that the next question can be fetched and the old questions aren't displayed
         answerArray.splice(0, answerArray.length);
         shuffledAnswers.splice(0, shuffledAnswers.length);
@@ -298,16 +313,8 @@ function displayPoints() {
     const pointsElement = document.getElementById('points'); 
     if (pointsElement) {
         pointsElement.innerText = `Points: ${points}`;
+        showFeedback(`Points: ${points}`, 'alert-success');
     };
-    if(ruleSetWrapper.classList.contains('is-open')) {
-        pointWrapper.classList.remove('hide');
-        ruleWrapper.classList.add('hide');
-    }else{
-        ruleSetWrapper.classList.add('is-open');
-        ruleWrapper.classList.add('hide');
-    };
-    if (pointWrapper.classList.contains('hide')) {
-        pointWrapper.classList.remove('hide');
-    };
+    
 };
 

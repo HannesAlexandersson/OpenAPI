@@ -2,9 +2,8 @@
   --primary-color: #ffd700;
   --background-color: #333;
 }
-*
-{
-    font-family: 'Bebas Neue', sans-serif;
+* {
+  font-family: "Bebas Neue", sans-serif;
 }
 body {
   overflow: hidden;
@@ -16,25 +15,21 @@ body {
   text-align: center;
   box-sizing: border-box;
 }
-.body-header{
-    display: flex;
+.body-header {
+  display: flex;
 }
-.body-header-right {    
-    gap: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.body-header-right {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.body-header-left{   
-    display: flex;
+.body-header-left {
+  display: flex;
 }
-.timer-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.btn-wrapper{
-    display: flex;
+
+.btn-wrapper {
+  display: flex;
 }
 button {
   box-shadow: grey 0px 0px 5px 0px;
@@ -70,14 +65,14 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.btn{
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    padding: 0.5em 1em;
-    border-radius: 15px;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
+.btn {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 0.5em 1em;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 /* HEADER ENDS*/
 /* TRIVIA*/
@@ -93,21 +88,40 @@ button {
   flex-direction: row;
   margin: 1rem;
 }
-.question{
-    text-align: center;
-    padding: 1em;
-    color: var(--primary-color);
-    font-size: 2em;
-    border: solid 2px var(--primary-color);
-    border-radius: 16px;
-    background-color: var(--background-color);
+.question {
+  text-align: center;
+  padding: 1em;
+  color: var(--primary-color);
+  font-size: 2em;
+  border: solid 2px var(--primary-color);
+  border-radius: 16px;
+  background-color: var(--background-color);
 }
 /* TRIVIA ENDS*/
 /* TIMER START*/
 .timer {
   margin-top: 10px;
 }
-
+.timer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.timer-wrapper {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: -300px;
+  width: 300px;
+  height: 260px;
+  transition: 0.3s ease-in-out transform;
+}
+.show {
+  transform: translateX(300px);
+  width: 450px; /* Set the width to the desired value */
+}
+/* timer prefab */
 .timer > svg {
   width: 200px;
   height: 200px;
@@ -144,4 +158,294 @@ button {
 /* TIMER ENDS*/
 .hide {
   display: none;
+}
+.hidden {
+  display: none;
+}
+@media (min-width: 200px) and (max-width: 360px){
+  .body-header-right > h1{
+    font-size: 1.5em;
+  }
+  .question {
+    text-align: center;
+    padding: 1rem;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    border: solid 2px var(--primary-color);
+    border-radius: 16px;
+    background-color: var(--background-color);
+}
+.answer-list {
+  padding: 0;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+  .start-btn {
+    font-size: larger;
+    width: 5rem;
+}
+  .diffLvl {    
+    height: 3rem;
+}
+  .diff-list {
+    font-size: x-large;
+    width: 5rem;
+    height: 3rem;    
+}
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 65%;
+    bottom: 0;
+    left: -79%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 360px) and (max-width: 521px)
+{
+  .body-header-right > h1{
+    font-size: 2em;
+  }
+  .question {
+    text-align: center;
+    padding: 1rem;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    border: solid 2px var(--primary-color);
+    border-radius: 16px;
+    background-color: var(--background-color);
+}
+.answer-list {
+  padding: 0;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+  .start-btn {
+    font-size: larger;
+    width: 5rem;
+}
+  .diffLvl {    
+    height: 3rem;
+}
+  .diff-list {
+    font-size: x-large;
+    width: 5rem;
+    height: 3rem;    
+}
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 75%;
+    bottom: 0;
+    left: -50%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 450px) and (max-width: 521px){
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 75%;
+    bottom: 0;
+    left: -51%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 521px) and (max-width: 698px){
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 75%;
+    bottom: 0;
+    left: -29%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 698px) and (max-width: 756px){
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: -49%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 756px) and (max-width: 820px){
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: -41%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 820px) and (max-width: 866px){
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: -35%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 866px) and (max-width: 920px){
+  .body-header-right > p {
+    display: none;
+  }
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: -30%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+  }
+}
+@media (min-width: 920px) and (max-width: 1020px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 7%;
+    bottom: 0;
+    left: -25%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1020px) and (max-width: 1180px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 7%;
+    bottom: 0;
+    left: -18%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1180px) and (max-width: 1289px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 7%;
+    bottom: 0;
+    left: -10%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1290px) and (max-width: 1440px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 7%;
+    bottom: 0;
+    left: -8%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1440px) and (max-width: 1545px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 5%;
+    bottom: 0;
+    left: -6%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1545px)and (max-width: 1650px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 5%;
+    bottom: 0;
+    left: -4%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1650px)and (max-width: 1772px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 5%;
+    bottom: 0;
+    left: 1%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1773px)and (max-width: 1919px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 4%;
+    bottom: 0;
+    left: 3%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+}
+}
+@media (min-width: 1920px) {
+  .timer-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 4%;
+    bottom: 0;
+    left: 5%;
+    width: 300px;
+    height: 260px;
+    transition: 0.3s ease-in-out transform;
+  }
 }

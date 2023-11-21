@@ -14,20 +14,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="body-header">
-      <div class="body-header-left">
-        <div class="timer-wrapper hide">
-          <h2>Time Left</h2><!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
-            <div class="timer animatable">
-              <svg>
-                <circle cx="50%" cy="50%" r="90"/>
-                <circle cx="50%" cy="50%" r="90" pathLength="1" />
-                <text x="100" y="100" text-anchor="middle"><tspan id="timeLeft"></tspan></text>
-                <text x="100" y="120" text-anchor="middle">seconds</text>
-              </svg>
-            </div>
+    <div class="timer-wrapper hide">
+      <!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
+        <div class="timer animatable">
+          <svg>
+            <circle cx="50%" cy="50%" r="90"/>
+            <circle cx="50%" cy="50%" r="90" pathLength="1" />
+            <text x="100" y="100" text-anchor="middle"><tspan id="timeLeft"></tspan></text>
+            <text x="100" y="120" text-anchor="middle">seconds</text>
+          </svg>
         </div>
-      </div>      
+    </div>
+    <div class="body-header">      
       <div class="body-header-right">
         <h1>Open Trivia games TM</h1>
         <p>Welcome to Trivia TM! Please read the rules for better understanding on how to play the game!</p>
@@ -36,7 +34,7 @@
           <button id="timer-button" class="rules">Enable timer</button>
         </div>
         <div class="diff-wrapper">
-          <select name="diff-list" id="diff-list">
+          <select name="diff-list" id="diff-list" class="diff-list">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
@@ -52,7 +50,8 @@
         <p>
           Start the game by pressing the "START" button. That will spawn a question for you along with a set of answer-
           alternatives(either multiple choice or a simple yes/no or true/false). You can select ONE of the answer-alternatives by simply pressing the button for the alternetive of your
-          choice.
+          choice. Please remember that this is an open API and its free to use. Therefore the server is limited in its capacity and can only handle a certain amount of requests per hour. If you get an error message, or no response this is most likely the cause.
+          But No worries, just wait a few seconds and try again!
         </p>
         <h3>Difficulty</h3>
         <p>
