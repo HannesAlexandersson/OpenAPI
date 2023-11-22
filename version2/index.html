@@ -7,13 +7,46 @@
     <link rel="Stylesheet" href="style.css" />
     </head>
     <body>
+        <header>
+            <div class="header-header">
+                <h1>Find A Meal</h1>
+            </div>
+            <div class="header-text">
+                <p>
+                    Find a meal is a website where you can search for food and get the recipe for it.
+                    You can also get a random meal if you don't know what you want to eat.
+                    Perfect for situations when you dont have much time,or just out of imagination.
+                    Its all free to use and you dont need to create an account.
+                    All cred to the API goes to <a href="https://www.themealdb.com/api.php">TheMealDB</a> for 
+                    providing the API.
+
+                    To use the service, just search for a meal in the search bar, either by the meal name, or bu the main ingredients.
+                    Or press the random button to randomly generate a recipe. You can also press the show all categories button to show
+                    all the categories and filter by area of origin. Have fun!
+                </p>
+            </div>
+        </header>
         <h2>Search for food</h2>
-        <form action="/search" method="get">
-            <label for="search">Search: </label>
-            <input type="text" id="search" name="search">
+        
+        <form action="" method="post" id="searchByNameForm">
+            <label for="search">Search by name: </label>
+            <input type="text" id="searchByName" name="search">
             <input type="submit" value="Sök">
         </form>
-        <button id="get-categories">show all categoris</button>
+        
+
+        <form action="" method="post" id="searchByIngredientForm">
+            <label for="searchByIngredientForm">Search by main ingredient: </label>
+            <input type="text" id="searchByIng" name="search">
+            <input type="submit" value="Sök">
+        </form>
+        
+        <select name="cat-list" id="cat-list" class="cat-list"></select>
+        <button id="get-category">SELECT</button>
+
+        <select name="area-list" id="area-list" class="area-list"></select>
+        <button id="get-area">SELECT</button>
+        
         <button id ="get-random-meal">Spawn a random meal</button>
         <script src="script.js"></script>
     </body>

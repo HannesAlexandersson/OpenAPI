@@ -1,6 +1,4 @@
-//https://opentdb.com/api_config.php
-//creating base nodes and elements &token=YOURTOKENHERE
-//fetching the session token
+//sessiontoken needed for the api to work when fetching many requests in a short amount of time
 let sessionToken = '&token=';
 const sessionTokenUrl = 'https://opentdb.com/api_token.php?command=request';
 const fetchSessionToken = async () => {
@@ -10,20 +8,23 @@ const fetchSessionToken = async () => {
     return sessionToken;
 };
 fetchSessionToken();
-
+//adding basic variables and nodes
 const easyUrl = `https://opentdb.com/api.php?amount=1&difficulty=easy${sessionToken}`;
 const mediumUrl = `https://opentdb.com/api.php?amount=1&difficulty=medium${sessionToken}`;
 const hardUrl = `https://opentdb.com/api.php?amount=1&difficulty=hard${sessionToken}`;
 const baseUrl = `https://opentdb.com/api.php?amount=1${sessionToken}`;
 let apiUrl = baseUrl;
 const  triviaWrapper = document.querySelector('#trivia-wrapper');
+const triviagameWrapper = document.querySelector('.trivia-game-wrapper');
 let answerArray = [];
 const triviaAnswerList = document.querySelector('#answer-list');
 const startBtn = document.querySelector('#start-btn');
 const feedbackAlert = document.getElementById('feedback-alert');
+const bodyHeader = document.querySelector('.body-header');
 let shuffledAnswers = [];
 let points = 0;
 let correctAnswerGlobal = '';
+
 //difficulty variables
 const diffList = document.querySelector('#diff-list');
 const diffBtn = document.querySelector('#fetch-cta');
@@ -37,7 +38,7 @@ const timerWrapper = document.querySelector('.timer-wrapper');
 let timerEnabled = false;
 let countdownTimer;
 
-//Creating nodes and elements for the 'rule-set', css animation for the actuall display
+//Creating nodes and elements for the 'rule-set', css animation for the actual display
 let ruleSetBtn = document.querySelector('#rule-set');
 let ruleSetWrapper = document.querySelector('#rule-set-wrapper');
 let ruleWrapper = document.querySelector('#rule-wrapper');
@@ -45,6 +46,7 @@ ruleWrapper.classList.add('hide')
 ruleSetWrapper.classList.add('hide')
 let pointWrapper = document.querySelector('#points-wrapper');
 pointWrapper.classList.add('hide');
+
 // Event listener for the selected difficulty element
 diffList.addEventListener('change', () => {    
     const selectedDifficulty = diffList.value;
@@ -79,7 +81,7 @@ diffList.addEventListener('change', () => {
     });        
 });
 
-//toggle the rule-set animation, Im using the same animation to display the points thus why they cant be toggled at the same time
+//toggle the rule-set animation
 ruleSetBtn.addEventListener('click', toggleRules);
 
 function toggleRules() {
@@ -96,15 +98,19 @@ function toggleRules() {
         ruleWrapper.classList.add('hide');
     };
 };
-//fetching the trivia game
-const fetchTrivia = async () => {
+
+//fetching the trivia game, also alot of logic for the timer and the game itself
+const fetchTrivia = async () => {    
     const response = await fetch(apiUrl);
     const data = await response.json();
     const question = data['results'][0];    
     displayTrivia(question);
+
     //storing the correct answer in a separate variable for to be able to compare it with the user input for correct/wrong
     const correctAnswer = question['correct_answer'];  
     correctAnswerGlobal = correctAnswer;  
+
+    //pushing the correct answer and the incorrect answers to the answerArray
     answerArray.push(question['correct_answer']);    
     question['incorrect_answers'].forEach((answer) => {
         const incorrectAnswer = answer;
@@ -114,16 +120,22 @@ const fetchTrivia = async () => {
         triviaAnswerList.classList.remove('hide');
     }
     //start the timer IF timer is enablad
-    if(timerEnabled){
-        //runTimer(document.querySelector('.timer'));
+    if(timerEnabled){        
         runTimer(timerWrapper);
     }      
     displayAnswers(answerArray,correctAnswer);
     //hide the start button after it has been clicked to avoid errors and multiple start buttons etc
     startBtn.classList.add('hide');
+    //create the illusion of a new page during the actual gameplay
+    bodyHeader.classList.add('hide');
+    triviagameWrapper.classList.remove('hide');
+    ruleSetWrapper.classList.add('hide');
 };
 
-//display the question
+//event listener for the start button, the callback function fetches the trivia game
+startBtn.addEventListener('click', fetchTrivia);
+
+//display the questions
 const displayTrivia = (question) =>{
     triviaWrapper.innerHTML = `
     <h5 class="category">Category: ${question['category']}</h5>
@@ -131,9 +143,6 @@ const displayTrivia = (question) =>{
     <h2 class="question">${question['question']}</h2>
     `;    
 };
-
-//event listener for the start button, the callback function fetches the trivia game
-startBtn.addEventListener('click', fetchTrivia);
 
 
 //display the answers after shuffling the array so that the correct answer isn't always the first one
@@ -161,6 +170,7 @@ const handleAnswerClick = (event) => {
     const isCorrect = selectedButton.dataset.correct === 'true';
     // Checking if the user selected the correct answer
     if (isCorrect) {
+        clearAnswerButtons();
         // User selected the correct answer OBS add a way to continue the game here
         showFeedback(`${selectedButton.innerText} is Correct!`, 'alert-success');
         points++;
@@ -172,22 +182,38 @@ const handleAnswerClick = (event) => {
         }else{
             triviaAnswerList.classList.add('hide');
         }
-        
+        //get the next question
         displayNextQuestionButton();
         
     } else {
+        clearAnswerButtons();
         // User selected the wrong answer OBS add a break to the game here
         showFeedback(`${selectedButton.innerText} is Wrong!`, 'alert-danger');
-        points = 0;        
+        points = 0;     
+        if(ruleSetWrapper.classList.contains('is-open')){   
         ruleSetWrapper.classList.remove('is-open');
+        };
         //reset timer for next question
         stopAndResetTimer();
+        toggleBackground();
         if(triviaAnswerList.classList.contains('hide')){
             triviaAnswerList.classList.remove('hide');
         }else{
             triviaAnswerList.classList.add('hide');
-        }
-        displayRestartButton();
+        };
+        if(bodyHeader.classList.contains('hide')){
+        bodyHeader.classList.remove('hide');
+            if(!triviagameWrapper.classList.contains('hide')){
+            triviagameWrapper.classList.add('hide');    
+            };
+        };
+        if(startBtn.classList.contains('hide')){
+        startBtn.classList.remove('hide');
+        //displayRestartButton();
+        };
+        // need to empty the arrays here aswell, so we can use the start button to restart the game without the olds answers. This is important becouse before with the displaynext button way the background stays even on startmenu wich we dont want
+        answerArray.splice(0, answerArray.length);
+        shuffledAnswers.splice(0, shuffledAnswers.length);
     }    
 };
 
@@ -203,18 +229,19 @@ const shuffleArray = (array) => {
 
 //timer logic
 timerBtn.addEventListener('click', () => {
-    if (timerWrapper.classList.contains('hide')) {
-        timerWrapper.classList.remove('hide');
-        timerWrapper.classList.add('show');
+   //bring forth the timer animation
+    if(timerWrapper.style.bottom !== '0'){
+    timerWrapper.style.bottom = '0%';
         showFeedback('Timer ACTIVATED', 'alert-success');
         timerEnabled = true;
     }else{
-        timerWrapper.classList.add('hide');
-        timerWrapper.classList.remove('show');
+        timerWrapper.style.bottom = '-100%';
         showFeedback('Timer DEACTIVATED!', 'alert-danger');
         timerEnabled = false;
-    }
+    };
 });
+
+//TIMER LOGIC START
 function isTimeLeft() {
     return timeLeft > -1;
   }
@@ -223,7 +250,7 @@ function runTimer(timerElement) {
     const timerCircle = timerElement.querySelector('svg > circle + circle');
 	timerElement.classList.add('animatable');
 	timerCircle.style.strokeDashoffset = 1;
-    
+    //adding some personal touches to the timer, like the amount from 1 min to 10 sec, and the color of the timer
 	countdownTimer = setInterval(function(){
 		if(timerEnabled && isTimeLeft()){
 			const timeRemaining = timeLeft--;
@@ -233,12 +260,12 @@ function runTimer(timerElement) {
 		} else {
 			clearInterval(countdownTimer);
 			timerElement.classList.remove('animatable');
-            showFeedback("TIME'S UP!", 'alert-danger');
-            triviaAnswerList.classList.add('hide');
+            showFeedback("TIME'S UP!", 'alert-danger');//adding alerts to show if time is up 
+            triviaAnswerList.classList.add('hide');// if user runs out of time, we hide the answer buttons
             
-            const restartBtn = document.createElement('button');
+            const restartBtn = document.createElement('button');//and offer the user a restart button
             restartBtn.innerText = 'Restart Game';
-            restartBtn.classList.add('btn', 'btn-primary');
+            restartBtn.classList.add('btn', 'btn-primary');//adding bootstrap classes to the button
             restartBtn.addEventListener('click', () => {
                 location.reload();
             });
@@ -258,7 +285,7 @@ function showFeedback(message, alertClass, autoDismissTime = 5000) {
     feedbackAlert.textContent = message;
     feedbackAlert.className = `alert ${alertClass}`;
     feedbackAlert.style.display = 'block';   
-
+    //adding a timeout to the alert so it dissapears after a set amount of time to save space on the screen
     setTimeout(() => {
         feedbackAlert.style.display = 'none';
     }, autoDismissTime);
@@ -308,7 +335,7 @@ const clearAnswerButtons = () => {
     // Clear the existing buttons from the container after the user has selected an answer so they dont get displayed again
     triviaAnswerList.innerHTML = ''; 
 };
-// Function to display current points on the screen
+// Function to display current points on the screen OBS change this to alerts instead
 function displayPoints() {
     const pointsElement = document.getElementById('points'); 
     if (pointsElement) {
@@ -317,4 +344,13 @@ function displayPoints() {
     };
     
 };
-
+//toggle the background image to create a more dynamic experience and a illusion of a new page
+startBtn.addEventListener('click', toggleBackground);
+function toggleBackground() {    
+    var bodyElement = document.body;
+    if(bodyElement.style.backgroundImage){
+        bodyElement.style.backgroundImage = '';
+    }else{    
+    bodyElement.style.backgroundImage = 'url("assets/pink-ombre-gradient-blur-background_1048-16907.jpg")';
+    };
+};

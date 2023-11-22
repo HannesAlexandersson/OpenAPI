@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="timer-wrapper hide">
+    <div class="timer-wrapper"><!--remember to put hide back if new animation doesnt work -->
       <!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
         <div class="timer animatable">
           <svg>
@@ -70,11 +70,13 @@
     <div class="header-wrapper">      
       <div id="feedback-alert" class="alert" role="alert"></div>
       <button id="start-btn" class="start-btn">START</button>
-    </div>
-    <div id="trivia-wrapper" class="trivia-wrapper">      
-      <ul id="answer-list" class="answer-list">
-      </ul>      
     </div>    
+    <div class="trivia-game-wrapper hide">      
+      <div id="trivia-wrapper" class="trivia-wrapper">      
+        <ul id="answer-list" class="answer-list">
+        </ul>      
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

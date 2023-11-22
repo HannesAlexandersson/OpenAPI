@@ -1,17 +1,19 @@
-const baseUrl = `www.themealdb.com/api/json/v1/1/search.php?s=`;
-const randomMealUrl = 'www.themealdb.com/api/json/v1/1/random.php';
-const listCategoriesUrl = 'www.themealdb.com/api/json/v1/1/categories.php';
-const filterByMainingredientUrl = 'www.themealdb.com/api/json/v1/1/filter.php?i='
-//adding searchtext to url
-const userInput = handleInput(); 
-
-function handleInput() {
-    // Hämta värdet från textinmatningen
-    var inputValue = document.getElementById('userInput').value;
-
-    // Logga värdet till konsolen
-    console.log("Användarens input: " + inputValue);
-
-    // Returnera värdet
-    return inputValue;
+let query = 'italian wedding soup';
+const baseUrl = 'https://api.api-ninjas.com/v1/recipe?query=' + query;
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'Gw7UTp4ILVBTtQqTcWefgA==wHXY7xvsIhSPlVqR',
+		'X-RapidAPI-Host': 'recipe-by-api-ninjas.p.rapidapi.com'
+	}
+};
+const getMeal = async () => {
+try {
+	const response = await fetch(baseUrl, options);
+	const result = await response.json();
+	console.log(result);
+} catch (error) {
+	console.error(error);
 }
+}
+getMeal();
