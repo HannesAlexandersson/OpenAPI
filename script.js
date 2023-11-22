@@ -230,14 +230,14 @@ const shuffleArray = (array) => {
 //timer logic
 timerBtn.addEventListener('click', () => {
    //bring forth the timer animation
-    if(timerWrapper.style.bottom !== '0'){
-    timerWrapper.style.bottom = '0%';
-        showFeedback('Timer ACTIVATED', 'alert-success');
-        timerEnabled = true;
-    }else{
+    if(timerWrapper.style.bottom === '0%'){
         timerWrapper.style.bottom = '-100%';
         showFeedback('Timer DEACTIVATED!', 'alert-danger');
         timerEnabled = false;
+    }else {
+        timerWrapper.style.bottom = '0%';
+        showFeedback('Timer ACTIVATED', 'alert-success');
+        timerEnabled = true;
     };
 });
 
