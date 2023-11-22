@@ -48,26 +48,26 @@ button {
   box-shadow: grey 0px 0px 5px 0px;
   border-radius: 15px;
 }
+/* RULE-SET*/
 .rules {
   font-size: 1.5em;
   margin: 1em;
   padding: 0.5em 0.75em;
 }
-/* RULE-SET*/
 .rule-set-wrapper {
   text-align: center;
   padding: 1em;
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -300px;
-  width: 300px;
+  right: -17rem;
+  width: 20rem;
   background-color: var(--background-color);
   color: var(--primary-color);
   transition: 0.3s ease-in-out transform;
 }
 .rule-set-wrapper.is-open {
-  transform: translateX(-300px);
+  transform: translateX(-17rem);
 }
 /* RULE-SET ENDS*/
 /* HEADER*/
@@ -127,11 +127,11 @@ button {
   width: 100%;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  transition: bottom 0.5s ease;  
+  transition: bottom 0.5s ease;
 }
 .show {
   transform: translateX(300px);
-  width: 450px; 
+  width: 450px;
 }
 /* timer prefab */
 .timer > svg {
@@ -225,8 +225,8 @@ button {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: -300px;
-    width: 147px;
+    right: -17rem;
+    width: 5rem;
     background-color: var(--background-color);
     color: var(--primary-color);
     transition: 0.3s ease-in-out transform;
@@ -236,24 +236,36 @@ button {
     font-size: 0.6em;
     flex-direction: column;
   }
-  .rule-wrapper > h3{
+  .rule-wrapper > h3 {
     font-size: small;
-}
-.header-wrapper {  
-  margin: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.alert {
-  position: relative;
-  padding: 0.25rem 0.25rem;
-  margin-bottom: 0rem;
-  border: 1px solid transparent;
-  border-radius: 0.15rem;
-}
+  }
+  .header-wrapper {
+    margin: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .alert {
+    position: relative;
+    padding: 0.25rem 0.25rem;
+    margin-bottom: 0rem;
+    border: 1px solid transparent;
+    border-radius: 0.15rem;
+  }
 }
 @media (min-width: 360px) and (max-width: 521px) {
+  .rule-set-wrapper {
+    text-align: center;
+    padding: 1em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -17rem;
+    width: 9rem;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    transition: 0.3s ease-in-out transform;
+}
   .body-header-right > h1 {
     font-size: 2em;
   }
@@ -297,41 +309,29 @@ button {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: bottom 0.5s ease;
-  }
-  .rule-set-wrapper {
-    text-align: center;
-    padding: 1em;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -300px;
-    width: 147px;
-    background-color: var(--background-color);
-    color: var(--primary-color);
-    transition: 0.3s ease-in-out transform;
-}
+  }  
   .rule-wrapper {
     display: flex;
     font-size: 0.5em;
     flex-direction: column;
   }
-  .rule-wrapper > h3{
+  .rule-wrapper > h3 {
     font-size: x-small;
-}
-.header-wrapper {
-  gap: 0.2rem;
-  margin: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.alert {
-  position: relative;
-  padding: 0.35rem 0.45rem;
-  margin-bottom: 0rem;
-  border: 1px solid transparent;
-  border-radius: 0.15rem;
-}
+  }
+  .header-wrapper {
+    gap: 0.2rem;
+    margin: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .alert {
+    position: relative;
+    padding: 0.35rem 0.45rem;
+    margin-bottom: 0rem;
+    border: 1px solid transparent;
+    border-radius: 0.15rem;
+  }
 }
 @media (min-width: 450px) and (max-width: 521px) {
   .body-header-right > p {
@@ -352,14 +352,14 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.alert {
-  position: relative;
-  padding: 0.45rem 0.55rem;
-  margin-bottom: 0rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-}
+  }
+  .alert {
+    position: relative;
+    padding: 0.45rem 0.55rem;
+    margin-bottom: 0rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
 }
 @media (min-width: 521px) and (max-width: 698px) {
   .body-header-right > p {
@@ -380,7 +380,7 @@ button {
     margin-bottom: 0rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-}
+  }
 }
 @media (min-width: 698px) and (max-width: 756px) {
   .body-header-right > p {
