@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open API</title>
-    <link rel="Stylesheet" href="style.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Open API</title>
+        <link rel="Stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div class="header-header">
-                <h1>Find A Meal</h1>
-            </div>
-            <div class="header-text">
-                <p>
-                    Find a meal is a website where you can search for food and get the recipe for it.
-                    You can also get a random meal if you don't know what you want to eat.
-                    Perfect for situations when you dont have much time,or just out of imagination.
-                    Its all free to use and you dont need to create an account.
-                    All cred to the API goes to <a href="https://www.themealdb.com/api.php">TheMealDB</a> for 
-                    providing the API.
+            <div class="header-wrapper">
+                <div class="header-header">
+                    <h1>Find A Meal</h1>
+                </div>
+                <div class="header-text">
+                    <p>
+                        Find a meal is a website where you can search for food and get the recipe for it.
+                        Mayby you are all out of ideas and need some insperation?
+                        Mayby you only have some odd ingredients left in the fridge and need to use them but doesnt know
+                        what to cook it into?
+                        Well then this is the site for you! here you can search for recipes, you can search for 
+                        main ingredients or you can search for a specific meal.
+                        All you have to do is enter your search in the search field and press search.                        
+                        Its all free to use and you dont need to create an account.
 
-                    To use the service, just search for a meal in the search bar, either by the meal name, or bu the main ingredients.
-                    Or press the random button to randomly generate a recipe. You can also press the show all categories button to show
-                    all the categories and filter by area of origin. Have fun!
-                </p>
+                        All cred to the API goes to <a href="https://api-ninjas.com/">APIninjas</a> for 
+                        providing the API.                        
+                    </p>
+                </div>
             </div>
         </header>
-        <h2>Search for food</h2>
-        
-        <form action="" method="post" id="searchByNameForm">
-            <label for="search">Search by name: </label>
-            <input type="text" id="searchByName" name="search">
-            <input type="submit" value="Sök">
-        </form>
-        
-
-        <form action="" method="post" id="searchByIngredientForm">
-            <label for="searchByIngredientForm">Search by main ingredient: </label>
-            <input type="text" id="searchByIng" name="search">
-            <input type="submit" value="Sök">
-        </form>
-        
-        <select name="cat-list" id="cat-list" class="cat-list"></select>
-        <button id="get-category">SELECT</button>
-
-        <select name="area-list" id="area-list" class="area-list"></select>
-        <button id="get-area">SELECT</button>
-        
-        <button id ="get-random-meal">Spawn a random meal</button>
+        <main>
+            <h2>Search for food</h2>
+            
+            <form action="" method="post" id="searchByNameForm">
+                <label for="searchByName">Search: </label>
+                <input type="text" id="searchByName" name="search">
+                <input class="searchBtn" type="submit" value="Sök">
+            </form>            
+        </main>
+        <div class="result-wrapper">
+            <div class="result-header-wrapper">
+            <h1 id="resultHeader"></h1>
+        </div>
+            <div class="result-container" id="resultContainer">
+                <div class="result" id="result">
+                    <!-- result from search appears here with help from JS -->
+                </div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="copy"></div>
+            <div class="footer-text">
+                <p>Github: Hannes Alexandersson</p>
+                <p>alexanderochson.se</p>
+            </div>    
+            <div class="footer-logga">
+                <img class="logo" src="/assets/Group 17.svg" alt="logga">
+            </div>               
+        </div>
+    </footer>
 </html>

@@ -1,0 +1,79 @@
+:root{
+    /* Colors */
+    --Primary-font-color: #000000;
+    --secondary-font-color: #ffffff;
+    --primary-background-color: #E485C3;   
+    --primary-border-color:#04FCF1;    
+    --primary-button-color: #04FCCF;    
+    --primary-accent-color:#FEB827;
+    /* Fonts size*/
+    --Primary-header-fontSize: 2.5dvi;
+    --primary-text-fontSize: 1.5dvi;
+    --secondary-text-fontSize: 1dvi;
+    /* divs */
+    --primary-div-width: 100dvi;
+    --secondary-div-width: 50dvi;
+    --small-img-width: 10dvi;
+    --large-img-width: 30dvi;
+    --medium-img-width: 20dvi;
+    --primary-card-width: calc(30dvi - 1rem);
+}
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-image: url(/assets/pink-ombre-gradient-blur-background_1048-16907.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100 dvw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.header.wrapper{
+    display: flex;
+    width: var(--primary-div-width);
+    border: 2px solid var(--primary-border-color);
+}
+.header-header {
+    font-family: 'Lobster', sans-serif;
+    color: var(--Primary-font-color);
+
+}
+.header-text{
+   font-family: 'Permanent Marker', 'cursive', sans-serif;
+}
+.searchBtn{
+
+}
+.result-wrapper{
+
+}
+.result-header-wrapper{
+
+}
+.result-container{
+
+}
+.result{
+
+}
+.footer-wrapper{
+    display: flex;
+    width: var(--primary-div-width);
+}
+.footer-text{
+    display: flex;
+    font-family: 'Permanent Marker', 'cursive', sans-serif;
+}
+.footer-logga{
+ width: var(--medium-img-width);
+}
+.logo{
+    width: var(--small-img-width);
+}
+.hide{
+    display: none;
+}
