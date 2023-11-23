@@ -1,15 +1,16 @@
 :root {
   /* Colors */
-  --Primary-font-color: #ffffff;
-  --secondary-font-color: #000;
-  --primary-background-color: #e485c3;
-  --primary-border-color: #04fcf1;
+  --Primary-font-color: #c6c9ca;
+  --secondary-font-color: #feb827;
+  --primary-background-color: #f2e7eeb3;
+  --enlarged-background-color: #f2e7ee;
+  --primary-border-color: #fcd2044a;
   --primary-button-color: #04fccf;
   --primary-accent-color: #feb827;
   /* Fonts size*/
-  --Primary-header-fontSize: 2.5rem;
+  --Primary-header-fontSize: 5em;
   --sec-header-fontSize: 2rem;
-  --primary-text-fontSize: 1.5rem;
+  --primary-text-fontSize: 2.5em;
   --secondary-text-fontSize: 1rem;
   /* divs */
   --prim-full-length: 100vw;
@@ -27,8 +28,8 @@
   /*margins*/
   --inner-card-margin: 1.5rem;
   --inner-card-header-margin: 2rem;
-  --innder-card-text-margin: 1rem;
-  --inner-card-padding: 1rem;
+  --innder-card-text-margin: 2rem 2rem 2rem 2rem;
+  --inner-card-padding: 1rem 1rem 1rem 1rem;
   /*line-height*/
   --header-line-height: 2rem;
   --header-text-line-height: 1.5rem;
@@ -39,19 +40,34 @@
   --btn-border-radius: 8px;
   --header-border-radius: 24px;
 }
-body {
-  display: flex;
+* {
   margin: 0;
   padding: 0;
-  background-image: url(/assets/pink-ombre-gradient-blur-background_1048-16907.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: var(--prim-full-length);
-  max-width: var(--sec-full-length);
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  box-sizing: border-box;
+}
+
+html {
+  height: 2000px;
+  background-color: red;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: fixed;
+}
+.trip{
+    mix-blend-mode: difference;
+}
+body {
+    height: 100%;
+    background-image: linear-gradient(hsl(10, 90, 66), transparent 70%);
+    background-size: 100% 100%;
+    display: flex;
+    filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+    max-width: var(--prim-full-length);
+    max-width: var(--sec-full-length);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .header-wrapper {
   text-align: center;
@@ -68,11 +84,15 @@ body {
   padding: 1rem 10rem 1rem 10rem;
   border-radius: var(--header-border-radius);
 }
+
 .header-header {
   font-family: "Lobster", sans-serif;
   color: var(--Primary-font-color);
+  text-shadow: 3px -2px 3px black;
 }
 .header-text {
+  text-shadow: -1px 1px 6px black;
+  color: var(--secondary-font-color);
   line-height: var(--card-text-line-height);
   font-family: "Permanent Marker", "cursive", sans-serif;
 }
@@ -130,35 +150,50 @@ main > h2 {
   display: flex;
   line-height: 1.2rem;
   padding: var(--inner-card-padding);
-  border: 2px solid black;
-  width: var(--primary-card-width);
-  width: var(--sec-card-width);
+  border: 2px solid black;  
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+
 .enlarged {
-  position: fixed;
-  top: 50%;
+  height: 100%;
+  width: 87%;
+  position: absolute;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: var(--prim-large-img-width);
-  height: calc(var(--prim-large-img-width) + 10vw);
+  background-color: var(--enlarged-background-color);
+  /* width: var(--prim-large-img-width); */
+  /* height: calc(var(--prim-large-img-width) + 10vw); */
 }
-.result > h2 {
-  line-height: var(--header-line-height);
-  font-family: "Lobster", sans-serif;
-  font-size: var(--sec-header-fontSize);
+.result > h2{
+    font-family: "Lobster", sans-serif;
+}
+.enlarged > h2 {
+    padding-top: 5rem;
+    line-height: var(--header-line-height);
+    font-family: "Lobster", sans-serif;
+    font-size: var(--Primary-header-fontSize);
 }
 .result > ul {
+  line-height: 1.5rem;
   list-style-type: circle;
   font-family: "cursive", sans-serif;
-  font-size: var(--secondary-text-fontSize);
 }
 .result > ol {
+  line-height: inherit;
   list-style-type: upper-roman;
   font-family: "cursive", sans-serif;
-  font-size: var(--secondary-text-fontSize);
+}
+.enlarged > h2 {
+  line-height: var(--header-line-height);
+  font-family: "Lobster", sans-serif;
+  font-size: var(--Primary-header-fontSize);
+}
+.result > * {
+  font-size: x-large;
+  flex: 1 1 23%;
 }
 footer {
   display: flex;
@@ -224,7 +259,7 @@ main {
     line-height: 1.2rem;
     padding: 1rem;
     border: 2px solid black;
-    width: auto;
+    width: 30%;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -232,7 +267,7 @@ main {
   .header-wrapper {
     width: var(--primary-div-width);
     width: var(--secondary-div-width);
-    padding:0 0.5rem 0 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
   }
   .footer-wrapper {
     display: flex;
