@@ -36,7 +36,7 @@
         <main>
             <h2>Search for food</h2>
             
-            <form action="" method="post" id="searchByNameForm">
+            <form action="" method="post" id="searchByNameForm" class="form">
                 <label for="searchByName">Search: </label>
                 <input type="text" id="searchByName" name="search">
                 <input class="searchBtn" type="submit" value="Sök">
@@ -46,17 +46,15 @@
             <div class="result-header-wrapper">
             <h1 id="resultHeader"></h1>
         </div>
-            <div class="result-container" id="resultContainer">
-                <div class="result" id="result">
+            <div class="result-container" id="resultContainer">                
                     <!-- result from search appears here with help from JS -->
-                </div>
+                
             </div>
         </div>
-        <script src="script.js"></script>
     </body>
     <footer>
         <div class="footer-wrapper">
-            <div class="copy"></div>
+            <div class="copy" id="copy"></div>
             <div class="footer-text">
                 <p>Github: Hannes Alexandersson</p>
                 <p>alexanderochson.se</p>
@@ -65,5 +63,6 @@
                 <img class="logo" src="/assets/Group 17.svg" alt="logga">
             </div>               
         </div>
+        <script src="script.js"></script>
     </footer>
 </html>
