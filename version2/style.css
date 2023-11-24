@@ -75,6 +75,7 @@ body {
   width: calc(var(--primary-div-width) - 20rem);
   width: calc(var(--secondary-div-width) - 20rem);
   border: 20px solid var(--primary-border-color);
+  border-image: url('/assets/deco-frame.jpg') 213 round round;
   background-color: var(--primary-background-color);
   flex-direction: column;
   align-items: center;
@@ -143,6 +144,7 @@ main > h2 {
 }
 
 .result {
+  gap: 0.5rem;
   overflow: auto;
   border-radius: var(--card-border-radius);
   background-color: var(--primary-background-color);
@@ -150,14 +152,16 @@ main > h2 {
   display: flex;
   line-height: 1.2rem;
   padding: var(--inner-card-padding);
-  border: 2px solid black;  
+  border: 2px solid black;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
 .enlarged {
-  height: 100%;
+  padding: 2rem;
+  gap: 2rem;
+  /* height: 100%; */
   width: 87%;
   position: absolute;
   top: 52%;
@@ -182,7 +186,7 @@ main > h2 {
   font-family: "cursive", sans-serif;
 }
 .result > ol {
-  line-height: inherit;
+  line-height: normal;
   list-style-type: upper-roman;
   font-family: "cursive", sans-serif;
 }
@@ -194,6 +198,12 @@ main > h2 {
 .result > * {
   font-size: x-large;
   flex: 1 1 23%;
+}
+ol > li{
+    font-size: var(--secondary-text-fontSize);
+    line-height: normal;
+    padding: 0.5rem;
+    font-family: "cursive", sans-serif;
 }
 footer {
   display: flex;

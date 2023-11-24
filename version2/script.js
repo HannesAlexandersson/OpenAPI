@@ -1,8 +1,6 @@
+// I dont want to show the result container before the user have submitted an search
 const resultContainer = document.querySelector('#resultContainer');
-
 resultContainer.classList.add('hide');
-
-
 const resultHeader = document.querySelector('#resultHeader');
 
 async function getMeal(apiKey, searchQuery) {
@@ -17,17 +15,20 @@ async function getMeal(apiKey, searchQuery) {
     };
 
     try {
+		//clear the result container before showing the new results when the user makes more then 1 search
 		resultContainer.innerHTML = '';
        
         const response = await fetch(apiEndpoint, options);
         const data = await response.json();
         console.log(data);
+
+		//error handling
 		if (data.length === 0) {
 			alert("No results found.");
 			return;
 		}
 		if (!response.ok) {
-            if (response.status === 404) {
+            if (response.status === 404 || response.status === 400) {
                 alert('Recipe not found. Check spelling or try a different search term.');
             } else {
                 alert('An error occurred. Please try again later.');
@@ -35,18 +36,21 @@ async function getMeal(apiKey, searchQuery) {
             return;
         }
 		
+		//loop through the data and create a result card for each result
 		data.forEach(element => {
 			const result = document.createElement('div');
 			result.classList.add('result');						
 			
+			//create content for the result cards
 			const resultTitle = document.createElement('h2');
 			resultTitle.textContent = element.title;
 
 			//lägg till bild från api2			
 			const imgElement = document.createElement('img');
 			imgElement.classList.add('resultImg');
-			imgElement.src = '/assets/random.png';
+			imgElement.src = '/assets/random.png';//placeholder image
 
+			//display the ingredients as a list
 			let ingredientHeader = document.createElement('h4');
 			ingredientHeader.classList.add('ingredient-header');
 			ingredientHeader.textContent = "Ingredients:";
@@ -66,13 +70,20 @@ async function getMeal(apiKey, searchQuery) {
 			let instructionsHeader = document.createElement('h4');
 			instructionsHeader.classList.add('instructions-header');
 			instructionsHeader.textContent = "Instructions:";
-    		const instructions = element.instructions.split(/\d+\./).filter(item => item.trim() !== '');
+
+			//sometimes the instructions response comes as one big string, sometimes an array. So I need to check that and handle it accordingly
+			let instructions;
+			if(typeof element.instructions === 'string'){
+				instructions = element.instructions.split('.').filter(item => item.trim() !== '');
+			}else if (Array.isArray(element.instructions)) {
+				instructions = element.instructions;
+			}
     		instructions.forEach(instruction => {
 				const li = document.createElement('li');
 				li.textContent = instruction.trim();
 				instructionsList.appendChild(li);
 			});
-			
+			//append the content to the result card
             result.appendChild(resultTitle);
 			result.appendChild(imgElement);
             result.appendChild(ingredientHeader);
@@ -93,7 +104,7 @@ async function getMeal(apiKey, searchQuery) {
 	console.error("Fetch error:", error);
 	};
 
-
+	//add event listener to the result cards, I want to be able to click on them to enlarge them, this brins back the ing and instruct lists
 	document.querySelectorAll('.result').forEach(card => {
 		card.addEventListener('click', () => {
 			const cardIngredientHeader = card.querySelector('.ingredient-header');
