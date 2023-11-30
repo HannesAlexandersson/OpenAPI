@@ -11,12 +11,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <div class="header">
             <div class="header-wrapper">
-                <div class="header-header">
+                <div class="default-header-primary  header-header">
                     <h1>Find A Meal</h1>
                 </div>
-                <div class="header-text">
+                <div class="default-p header-text">
                     <p>
                         Find a meal is a website where you can search for food and get the recipe for it.
                         Mayby you are all out of ideas and need some insperation?
@@ -42,12 +42,10 @@
                     <button class="searchBtn" id="trip">Trippy?</button>
                 </div>
             </div>
-        </header>
-        <main>
-            <h2>Search for food</h2>
-            
+        </div>
+        <main>          
             <form action="" method="post" id="searchByNameForm" class="form">
-                <label for="searchByName">Search: </label>
+                <label for="searchByName" class="default-header-main header-main">Search for food:</label>
                 <input type="text" id="searchByName" name="search">
                 <input class="searchBtn" type="submit" value="Sök">
             </form>            
@@ -60,19 +58,19 @@
                     <!-- result from search appears here with help from JS -->
                 
             </div>
-        </div>
+        </div>    
+        <footer>
+            <div class="footer-wrapper">
+                <div class="copy" id="copy"></div>
+                <div class="footer-text">
+                    <p>Github: Hannes Alexandersson</p>
+                    <p>alexanderochson.se</p>
+                </div>    
+                <div class="footer-logga">
+                    <img class="logo" src="/assets/Group 17.svg" alt="logga">
+                </div>               
+            </div>
+            <script src="script.js"></script>
+        </footer>
     </body>
-    <footer>
-        <div class="footer-wrapper">
-            <div class="copy" id="copy"></div>
-            <div class="footer-text">
-                <p>Github: Hannes Alexandersson</p>
-                <p>alexanderochson.se</p>
-            </div>    
-            <div class="footer-logga">
-                <img class="logo" src="/assets/Group 17.svg" alt="logga">
-            </div>               
-        </div>
-        <script src="script.js"></script>
-    </footer>
 </html>
