@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Open API</title>
-        <link rel="Stylesheet" href="style-meal.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
-    </head>
+
     <body>
         <div class="header">
             <div class="header-wrapper">
@@ -59,18 +48,4 @@
                 
             </div>
         </div>    
-        <footer>
-            <div class="footer-wrapper">
-                <div class="copy" id="copy"></div>
-                <div class="footer-text">
-                    <p>Github: Hannes Alexandersson</p>
-                    <p>alexanderochson.se</p>
-                </div>    
-                <div class="footer-logga">
-                    <img class="logo" src="/assets/Group 17.svg" alt="logga">
-                </div>               
-            </div>
-            <script src="script-meal.js"></script>
-        </footer>
-    </body>
-</html>
+        

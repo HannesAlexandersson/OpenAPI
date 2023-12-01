@@ -1,0 +1,19 @@
+footer {
+    border-top: ridge;
+    margin-top: 7rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.footer-logo-wrapper {
+    width: 50%;
+}
+.footer-logo {
+    width: 78%;
+}
+.copyright {
+    text-shadow: 1px 0px 16px black;
+    width: 50%;
+}

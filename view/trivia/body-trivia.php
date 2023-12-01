@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open API</title>
-    <link rel="Stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  </head>
+
   <body>
     <div class="timer-wrapper"><!--remember to put hide back if new animation doesnt work -->
       <!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
@@ -33,7 +19,7 @@
         </p>
         <p> 
           P.S Wanna look for some recipes for something to cook after the game? 
-          Visit <a href="findAMeal.html">Find a meal</a> and search for something to cook!
+          Visit <a href="/view/meal/index-meal.php">Find a meal</a> and search for something to cook!
         </p>
         <div class="btn-wrapper">
           <button id="rule-set" class="rules">RULES</button>
@@ -82,7 +68,7 @@
         <ul id="answer-list" class="answer-list">
         </ul>      
       </div>
-    </div>
-    <script src="script.js"></script>
+    </div>    
+    <script src="/scripts/script.js"></script>
   </body>
 </html>
