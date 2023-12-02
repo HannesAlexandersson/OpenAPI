@@ -45,10 +45,30 @@ async function getMeal(apiKey, searchQuery) {
 			const resultTitle = document.createElement('h2');
 			resultTitle.textContent = element.title;
 
-			//lägg till bild från api2			
+			//lägg till bild från api2
+			async function getImage(apiKey){
+				const imgApiEndpoint = 'https://api.api-ninjas.com/v1/randomimage?category=food';
+				const imgOptions = {
+					method: 'GET',
+					headers: {
+						'X-Api-Key': apiKey,            
+						'Accept': 'image/jpg'
+					},
+				};
+				try{
+					const imgResponse = await fetch(imgApiEndpoint, imgOptions);
+					const blob = await imgResponse.blob();
+					const imgUrl = URL.createObjectURL(blob);        
+					console.log(imgUrl);
+					imgElement.src = imgUrl;
+				}catch (error) {
+					console.error("Fetch error:", error);
+					};
+			}			
 			const imgElement = document.createElement('img');
 			imgElement.classList.add('resultImg');
-			imgElement.src = '/assets/images/random.png';//placeholder image
+			//imgElement.src = '/assets/images/random.png';//placeholder image
+			imgElement.src = getImage(apiKey);
 
 			//display the ingredients as a list
 			let ingredientHeader = document.createElement('h4');
