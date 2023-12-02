@@ -1,0 +1,25 @@
+.background-chooser {
+    display: flex;
+    justify-content: center;
+}
+.promt-text {
+    display: flex;
+    color: var(--default-text-color);
+    flex-direction: column;
+    align-items: center;
+}
+.background-btn{
+    border-radius: 5%;
+    box-shadow: 3px -2px 20px black;
+    width: 65%;
+    padding: 0.5rem;
+    text-shadow: 3px -2px 20px black;
+    background-color: var(--primary-accent-color);
+    color: var(--default-text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--default-font);
+    cursor: pointer;
+    transition: 0.3s;
+    max-width: 15rem;
+}

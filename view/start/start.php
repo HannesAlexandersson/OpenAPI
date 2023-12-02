@@ -1,6 +1,6 @@
-<body>
+    
     <div class="header default-font">
-        <div class="left-side">
+        <div class="left-side card">
             <h1>The Open API service network</h1>
             <h4>Where open api`s become reality</h4>
             <p>This is the place where I will store and collect all of my little side-projects that have anything to do with 

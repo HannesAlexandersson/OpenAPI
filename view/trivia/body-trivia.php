@@ -14,13 +14,16 @@
     <div class="body-header">      
       <div class="body-header-right">
         <h1>Open Trivia games TM</h1>
-        <p>
-          Welcome to Trivia TM! Please read the rules for better understanding on how to play the game!         
-        </p>
-        <p> 
-          P.S Wanna look for some recipes for something to cook after the game? 
-          Visit <a href="/view/meal/index-meal.php">Find a meal</a> and search for something to cook!
-        </p>
+        <div class="para">
+          <p>
+            Welcome to Trivia TM! Please read the rules for better understanding on how to play the game!         
+          </p>
+          <p> 
+            P.S Wanna look for some recipes for something to cook after the game? 
+            Visit <a href="/view/meal/index-meal.php">Find a meal</a> and search for something to cook!
+            Or go back to the <a href="/index.php">hub</a> and choose another game to play!
+          </p>
+        </div>
         <div class="btn-wrapper">
           <button id="rule-set" class="rules">RULES</button>
           <button id="timer-button" class="rules">Enable timer</button>

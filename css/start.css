@@ -33,22 +33,29 @@ a {
   a:hover {
     text-decoration: none;
   }
-.header {
+  .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 0 0.5rem 3rem 0.5rem;
 }
 .left-side {
-    text-shadow: 3px -2px 20px black;
+    
     color: var(--default-text-color);
+   
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     top: 5rem;
-    text-align: center;
-
+    text-align: center;   
     
+}
+.card{
+    border-radius: 5%;
+    box-shadow: 3px -2px 20px black;
+    width: 65%;
+    padding: 0.5rem;
+    text-shadow: 3px -2px 20px black;
 }

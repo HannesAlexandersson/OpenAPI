@@ -106,7 +106,7 @@ body {
   text-align: center;
 
   border: 2rem solid var(--primary-border-color);
-  border-image: url('/assets/deco-frame.jpg') 213 round round;
+  border-image: url('/assets/images/deco-frame.jpg') 213 round round;
   
   background-color: var(--primary-background-color); 
   /* padding: var(--inner-header-padding); */
@@ -156,9 +156,11 @@ body {
 .result-header-wrapper {
   display: flex;
 }
+.resultImg{
+  max-width: 80%;
+}
 .result-container {
-  display: flex;
-  border: var(--default-border);
+  display: flex; 
   color: var(--primary-font-color);
   flex-direction: row;
   align-content: center;
@@ -256,11 +258,13 @@ footer {
   gap: 1rem;
   display: flex;
   font-family: "Permanent Marker", "cursive", sans-serif;
-  flex-direction: row;
+  
+  flex-direction: column;
   justify-content: space-evenly;
   font-size: var(--secondary-text-fontSize);
   align-items: center;
 }
+
 .footer-logga {
   width: var(--prim-small-img-width);
   width: var(--sec-small-img-width);
@@ -278,13 +282,23 @@ main {
   flex-direction: column;
   align-items: center;
 }
+@media (min-width: 450px) {
+  .footer-wrapper {
+    flex-direction: row;
+  }
+.footer-text{
+  flex-direction: row;
+}
+}
 @media (min-width: 800px) {
   .header-wrapper {    
     width: calc(var(--primary-div-width) - 10rem);
     width: calc(var(--secondary-div-width) - 10rem);  
     padding: var(--inner-header-padding);
   }
-  
+  .result{
+    max-width: 15%;
+  }
 }
 @media (min-width: 1100px) {
   .header-header {
@@ -295,5 +309,13 @@ main {
 }
 .header-wrapper {
   padding: 3rem;
+}
+.footer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: flex-end;
+  align-items: center;
+  color: var(--primary-accent-color);
 }
 }

@@ -48,7 +48,7 @@ async function getMeal(apiKey, searchQuery) {
 			//lägg till bild från api2			
 			const imgElement = document.createElement('img');
 			imgElement.classList.add('resultImg');
-			imgElement.src = '/assets/random.png';//placeholder image
+			imgElement.src = '/assets/images/random.png';//placeholder image
 
 			//display the ingredients as a list
 			let ingredientHeader = document.createElement('h4');
@@ -150,15 +150,7 @@ async function getMeal(apiKey, searchQuery) {
 	});	
 			
 };
-/* 
-async function getImage() {
-	const placeHolder = 'https://baconmockup.com/300/200';	
-	const response = await fetch(placeHolder);
-	const imgBlob = await response.blob();	
-	const imgElement = document.createElement('img');
-	imgElement.src = URL.createObjectURL(imgBlob);
-};
- */
+
 
 
 

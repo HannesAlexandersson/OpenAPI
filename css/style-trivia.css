@@ -28,8 +28,12 @@ body {
 }
 .body-header {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .body-header-right {
+  margin: 0 0.5rem 0 0.5rem;
+  text-align: center;
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -51,7 +55,7 @@ button {
 /* RULE-SET*/
 .rules {
   font-size: 1.5em;
-  margin: 1em;
+  /* margin: 1em; */
   padding: 0.5em 0.75em;
 }
 .rule-set-wrapper {
@@ -67,6 +71,7 @@ button {
   transition: 0.3s ease-in-out transform;
 }
 .rule-set-wrapper.is-open {
+  overflow: scroll;
   transform: translateX(-17rem);
 }
 /* RULE-SET ENDS*/
@@ -269,6 +274,9 @@ button {
   .body-header-right > h1 {
     font-size: 2em;
   }
+  .para{
+
+  }
   .question {
     text-align: center;
     padding: 1rem;
@@ -334,9 +342,7 @@ button {
   }
 }
 @media (min-width: 450px) and (max-width: 521px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -362,9 +368,7 @@ button {
   }
 }
 @media (min-width: 521px) and (max-width: 698px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -383,9 +387,7 @@ button {
   }
 }
 @media (min-width: 698px) and (max-width: 756px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -397,9 +399,7 @@ button {
   }
 }
 @media (min-width: 756px) and (max-width: 820px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -411,9 +411,7 @@ button {
   }
 }
 @media (min-width: 820px) and (max-width: 866px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -425,9 +423,7 @@ button {
   }
 }
 @media (min-width: 866px) and (max-width: 920px) {
-  .body-header-right > p {
-    display: none;
-  }
+  
   .timer-wrapper {
     position: fixed;
     bottom: -100%;
@@ -448,6 +444,9 @@ button {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: bottom 0.5s ease;
   }
+  .rules {    
+    margin: 1em;    
+}
 }
 @media (min-width: 1020px) and (max-width: 1180px) {
   .timer-wrapper {

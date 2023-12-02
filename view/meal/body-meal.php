@@ -28,7 +28,11 @@
                         Visit <a href="index.html">Trivia</a> and play a game of trivia.
 
                     </p>
-                    <button class="searchBtn" id="trip">Trippy?</button>
+                    <div class="btn-wrapper">
+                        <button class="searchBtn" id="trip">Trippy?</button>
+                        <a href="/index.php"><button class="searchBtn" id="trip">GO BACK</button></a>
+                    </div>
+
                 </div>
             </div>
         </div>
