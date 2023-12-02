@@ -1,19 +1,25 @@
 footer {
     border-top: ridge;
-    margin-top: 7rem;
+    margin-top: auto;
     height: 5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
 .footer-logo-wrapper {
-    width: 50%;
+    display: flex;
+    width: 45%;
 }
 .footer-logo {
-    width: 78%;
+    aspect-ratio: 1/1;
+    width: 3rem;
 }
 .copyright {
+    display: flex;
     text-shadow: 1px 0px 16px black;
-    width: 50%;
+    width: 45%;
+    color: var(--primary-accent-color);
+    font-family: "Bebas Neue", sans-serif;
 }

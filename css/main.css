@@ -1,0 +1,17 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.api {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.plain-text{
+    color: var(--default-text-color);
+}
+
+.api-enabler{}
+.enabler{}

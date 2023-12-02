@@ -2,7 +2,7 @@
     <div class="logo-wrapper">
         <img class="logo" src="assets/images/Group 17.svg" />
     </div>
-    <div class="nav-mid">
+    <div class="nav-mid default-font">
         <a class="navbar-anchor" href="#">
             <p>API services</p>            
         </a>
@@ -12,8 +12,7 @@
         <a class="navbar-anchor" href="#">
             <p>Contacts</p>            
         </a>
-    </div>    
-    <script type="text/javascript" src="/scripts/nav-scroll.js"></script>
+    </div>
 </nav>
 <nav class="nav-bar-mobile">
     <div class="logo-wrapper-mobile">
@@ -26,6 +25,6 @@
             <a class="navbar-anchor" href="view/index-meal.php"><p>Find a Meal</p></a>
             <a class="navbar-anchor" href="#"><p>Contacts</p></a>            
         </div>     
-    </div>
-    <script type="text/javascript" src="/scripts/nav-scroll.js"></script>
+    </div>   
 </nav>
+<script type="text/javascript" src="/scripts/nav-scroll.js"></script>

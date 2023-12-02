@@ -9,10 +9,5 @@
                 , but given time I will add more and more projects to the site. So please check back from time to time to see if there
                 is anything new.
             </p>
-        </div>
-        <div class="right-side">
-            <div class="header-img-container">
-                <img src="/assets/images/random.png" alt="steaming cup of coffee" class="header-img">
-            </div>
-        </div>
+        </div>       
     </div>
