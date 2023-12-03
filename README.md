@@ -1,6 +1,9 @@
 # OpenAPI
-project about using open apis during Yrgo educational plan for webdev.
-Building a free to play, html based trivia game that fetches trivia questions from the opentdb.com DB.
-This is for educational purposes and NOT for commercial endevours. 
+project about using open apis during Yrgo educational plan for webdevelopers.
 
-I also took the liberty and made another project. I made an recipe finder using the ninjaAPI recipie API. At first I wanted to bring 2 api's together and fetch recipies from one and images of the food from another. But comin across an good working and maintained free open api for food pics turned out to be much harder then I initially thought. So alas, there is (ATM) no pics to the recipies. But in a way it should imo count as towards the req for working with 2 api's. 
+## Navigation HUB
+I started off making an simple trivia game for the assignment. Since it was rather simple I decided to make another application after I was done with the trivia game. So i search the open API github repo to find any interesting api's I could use. 
+
+I tried a couple of them out, but didnt really find any that I felt stronlgy about. So I started to google for open api's. After a while I came across APIninjas homepage. A place where they gathered all their API's. Thats where I found an recipe API. So I started building a recipe finder app. When I was done with that I felt something was lacking to the app. The api didnt send any pictures of the recipes with the response data. So I started looking for an api that could generate food pictures. Well to make a long story short, I wanst able to make the api match the recipes to any pictures of that course. Since the timebudget for this assignment doesnt really allow for anymore work I had to settle for random placeholder pictures for my recipes (for now). 
+
+So now I was in a situation where I had techniclly 3 different API's. So I build a simple navigationhub to gather them in and offer a user interface to navigate between the api's. Perhaps I'll revisit this project in the future and add more api's to the network. 
