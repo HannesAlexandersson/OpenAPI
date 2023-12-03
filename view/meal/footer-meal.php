@@ -9,7 +9,7 @@
                     <img class="logo" src="/assets/images/Group 17.svg" alt="logga">
                 </div>               
             </div>
-            <script src="/scripts/script-meal.js"></script>
+            <script src="script-meal.js"></script>
         </footer>
     </body>
 </html>

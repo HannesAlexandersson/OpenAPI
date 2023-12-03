@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- <base href="http://www.alexanderochson.se/openAPI/" /> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open API</title>
-    <link rel="Stylesheet" href="/css/start.css" />
+    <title>Open API</title>    
     <link rel="Stylesheet" href="/css/navbar.css" />
     <link rel="Stylesheet" href="/css/start.css" /> 
     <link rel="Stylesheet" href="/css/background.css" />

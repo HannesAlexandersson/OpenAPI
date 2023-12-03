@@ -72,6 +72,6 @@
         </ul>      
       </div>
     </div>    
-    <script src="/scripts/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

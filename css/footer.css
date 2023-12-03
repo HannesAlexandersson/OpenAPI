@@ -12,8 +12,7 @@ footer {
     display: flex;
     width: 45%;
 }
-.footer-logo {
-    aspect-ratio: 1/1;
+.footer-logo {    
     width: 3rem;
 }
 .copyright {
@@ -22,4 +21,5 @@ footer {
     width: 45%;
     color: var(--primary-accent-color);
     font-family: "Bebas Neue", sans-serif;
+    justify-content: flex-end;
 }
