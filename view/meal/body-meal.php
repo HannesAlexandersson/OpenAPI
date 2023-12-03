@@ -25,7 +25,7 @@
                     </p>
                     <p>
                         P.S You wanna play a trivia game while you wait for your food to cook?
-                        Visit <a href="index.html">Trivia</a> and play a game of trivia.
+                        Visit <a href="/view/trivia/index-trivia.php">Trivia</a> and play a game of trivia.
 
                     </p>
                     <div class="btn-wrapper">

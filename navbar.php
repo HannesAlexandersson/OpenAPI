@@ -3,10 +3,10 @@
         <img class="logo" src="assets/images/Group 17.svg" />
     </div>
     <div class="nav-mid default-font">
-        <a class="navbar-anchor" href="view\trivia\index-trivia.php">
+        <a class="navbar-anchor" href="view/trivia/index-trivia.php">
             <p>Trivia</p>            
         </a>
-        <a class="navbar-anchor" href="view/index-meal.php">
+        <a class="navbar-anchor" href="view/meal/index-meal.php">
             <p>Find a Meal</p>            
         </a>
         <a class="navbar-anchor" href="#">

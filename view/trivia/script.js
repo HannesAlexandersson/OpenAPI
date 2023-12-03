@@ -351,6 +351,6 @@ function toggleBackground() {
     if(bodyElement.style.backgroundImage){
         bodyElement.style.backgroundImage = '';
     }else{    
-    bodyElement.style.backgroundImage = 'url("assets/pink-ombre-gradient-blur-background_1048-16907.jpg")';
+    bodyElement.style.backgroundImage = 'url("/../assets/backgrounds/pink-ombre-gradient-blur-background_1048-16907.jpg")';
     };
 };
