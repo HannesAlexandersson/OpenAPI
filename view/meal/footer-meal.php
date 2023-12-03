@@ -1,4 +1,4 @@
-<footer>
+        <footer>
             <div class="footer-wrapper">
                 <div class="copy" id="copy"></div>
                 <div class="footer-text">

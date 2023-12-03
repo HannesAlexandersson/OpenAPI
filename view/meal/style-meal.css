@@ -25,13 +25,14 @@
 
 
 html {  
-  box-sizing: border-box;  
-  background-color: red; 
+  box-sizing: border-box;    
 }
 
 body {    
     margin: 0;
     padding: 0;   
+    height: 100vh;
+    height: 100dvh;
 
     /*I NEED THIS FOR THE "TRIPPY" EFFECT*/
     background-image: linear-gradient(hsl(10, 90, 66), transparent 70%);    
@@ -263,9 +264,7 @@ main {
   }
 }
 @media (min-width: 800px) {
-  .header-wrapper {    
-    width: calc(100vw - 10rem);
-    width: calc(100dvw - 10rem);  
+  .header-wrapper {      
     padding: 2rem;
   }
   .result{
