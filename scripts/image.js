@@ -19,7 +19,7 @@ async function setImageAsBackground(apiKey, category) {
         const imgUrl = URL.createObjectURL(blob);        
         console.log(imgUrl);
 
-        // Set the background image of the body
+        // Sets the background image of the body
         document.body.style.backgroundImage = `url(${imgUrl})`;        
     } catch (error) {
         console.error("Fetch error:", error);
@@ -27,7 +27,7 @@ async function setImageAsBackground(apiKey, category) {
 };
 
 
-//dropdownlogic for the background-chooser
+//dropdownmenu logic for the background-chooser section
 function chooseBackground() {
     const category = document.getElementById("category").value;
     const apiKey = 'Gw7UTp4ILVBTtQqTcWefgA==wHXY7xvsIhSPlVqR';

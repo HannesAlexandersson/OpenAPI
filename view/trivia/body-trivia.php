@@ -1,6 +1,6 @@
 
   <body>
-    <div class="timer-wrapper"><!--remember to put hide back if new animation doesnt work -->
+    <div class="timer-wrapper">
       <!--All cred for timer goes to the o.g creator : @CodePen "Animated Countdown Timer" by Kirti Vernekar -->
         <div class="timer animatable">
           <svg>

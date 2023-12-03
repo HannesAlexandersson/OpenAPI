@@ -1,6 +1,6 @@
 // I dont want to show the result container before the user have submitted an search
 const resultContainer = document.querySelector('#resultContainer');
-resultContainer.classList.add('hide');
+resultContainer.classList.add('hide'); //So I add the hide class to it and reveals it after the search query is submitted
 const resultHeader = document.querySelector('#resultHeader');
 
 async function getMeal(apiKey, searchQuery) {
@@ -26,7 +26,7 @@ async function getMeal(apiKey, searchQuery) {
 		if (data.length === 0) {
 			alert("No results found.");
 			return;
-		}
+		} //if the response is not ok, alert the user
 		if (!response.ok) {
             if (response.status === 404 || response.status === 400) {
                 alert('Recipe not found. Check spelling or try a different search term.');
@@ -67,7 +67,7 @@ async function getMeal(apiKey, searchQuery) {
 			}			
 			const imgElement = document.createElement('img');
 			imgElement.classList.add('resultImg');
-			//imgElement.src = '/assets/images/random.png';//placeholder image
+			//imgElement.src = '/assets/images/random.png';//default placeholder image
 			imgElement.src = getImage(apiKey);
 
 			//display the ingredients as a list
@@ -84,7 +84,7 @@ async function getMeal(apiKey, searchQuery) {
                 li.textContent = ingredient.trim();
                 ingredientList.appendChild(li);
             });
-			
+			//display the instructions as a list
 			let instructionsList = document.createElement('ol');
 			instructionsList.classList.add('instructions-list');
 			let instructionsHeader = document.createElement('h4');
@@ -93,11 +93,11 @@ async function getMeal(apiKey, searchQuery) {
 
 			//sometimes the instructions response comes as one big string, sometimes an array. So I need to check that and handle it accordingly
 			let instructions;
-			if(typeof element.instructions === 'string'){
+			if(typeof element.instructions === 'string'){ //if the instructions is a string, split it into an array
 				instructions = element.instructions.split('.').filter(item => item.trim() !== '');
-			}else if (Array.isArray(element.instructions)) {
+			}else if (Array.isArray(element.instructions)) { //if the instructions is an array, use it as it is
 				instructions = element.instructions;
-			}
+			} //loop through the instructions and add them to the list
     		instructions.forEach(instruction => {
 				const li = document.createElement('li');
 				li.textContent = instruction.trim();
@@ -111,7 +111,7 @@ async function getMeal(apiKey, searchQuery) {
 			result.appendChild(instructionsHeader);
             result.appendChild(instructionsList);
 
-			//hide the result from the small cards
+			//hide the result from the small cards, I only want to show the title and image
 			ingredientHeader.classList.add('hide');
 			ingredientList.classList.add('hide');
 			instructionsHeader.classList.add('hide');
@@ -124,7 +124,7 @@ async function getMeal(apiKey, searchQuery) {
 	console.error("Fetch error:", error);
 	};
 
-	//add event listener to the result cards, I want to be able to click on them to enlarge them, this brins back the ing and instruct lists
+	//add event listener to the result cards, I want to be able to click on them to enlarge them, this brins back the ingredient and instruction lists
 	document.querySelectorAll('.result').forEach(card => {
 		card.addEventListener('click', () => {
 			const cardIngredientHeader = card.querySelector('.ingredient-header');
@@ -135,7 +135,7 @@ async function getMeal(apiKey, searchQuery) {
 			//if the card is already enlarged, remove the enlarged class and show the other cards again
 			if(card.classList.contains('enlarged')) {
 				card.classList.remove('enlarged');			
-				cardIngredientHeader.classList.toggle('hide');
+				cardIngredientHeader.classList.toggle('hide');// hide the content again
 				cardIngredientList.classList.toggle('hide');
 				cardInstructionsHeader.classList.toggle('hide');
 				cardInstructionsList.classList.toggle('hide');
