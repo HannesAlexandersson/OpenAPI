@@ -1,5 +1,5 @@
 # OpenAPI
-project about using open apis during Yrgo educational plan for web-developers.
+project about using open apis during Yrgo educational plan for web-developers. DEPLOYED SITE AT: https://alexanderochson.se/OpenAPI/
 
 ## Explanation
 I used 3 different api's to complete this project. 
