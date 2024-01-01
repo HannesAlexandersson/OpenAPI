@@ -44,7 +44,7 @@ if(isset($_POST['search'])) {
 
 <body>
     <div class="container grid-sm">
-        <form class="columns my-2" action="04.php" method="post">
+        <form class="columns my-2" action="index-gif.php" method="post">
             <div class="column col-9">
                 <input type="search" name="search" placeholder="Search gifs..." class="form-input">
             </div>

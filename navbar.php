@@ -9,6 +9,9 @@
         <a class="navbar-anchor" href="view/meal/index-meal.php">
             <p>Find a Meal</p>            
         </a>
+        <a class="navbar-anchor" href="view/gif/index-gif.php">
+            <p>Giffy-Portal</p>            
+        </a>
         <a class="navbar-anchor" href="#">
             <p>Contacts</p>            
         </a>

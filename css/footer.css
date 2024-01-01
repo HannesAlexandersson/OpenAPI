@@ -1,5 +1,5 @@
 footer {
-    border-top: ridge;
+    /* border-top: ridge; */
     margin-top: auto;
     height: 5rem;
     display: flex;
@@ -11,9 +11,18 @@ footer {
 .footer-logo-wrapper {
     display: flex;
     width: 45%;
+    flex-direction: column;
+}
+.footer-logo-wrapper > *{
+    margin: 0;
+    padding: 0;
 }
 .footer-logo {    
     width: 3rem;
+}
+.little-signature{
+    font-size: smaller;
+    color: var(--primary-accent-color);
 }
 .copyright {
     display: flex;
