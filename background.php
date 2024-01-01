@@ -1,7 +1,7 @@
 <body>
     <div class="background-chooser">
         <div class="promt-text default-font card">
-            <h1>Choose your background</h1>
+            <h1>The first API lets you choose your own background</h1>
             <label for="category">Select a category:</label>
             <select id="category" class="default-font">
                 <option value="nature">Nature</option>
